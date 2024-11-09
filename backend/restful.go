@@ -11,7 +11,7 @@ import (
 	"github.com/vmihailenco/msgpack/v5"
 )
 
-const apiHost = "mhws.io"
+const apiHost = "hjm.rebe.capcom.com"
 
 var apis = []func(r *gin.Engine){
 	registerSystemJson,
