@@ -13,7 +13,7 @@ import (
 	"github.com/vmihailenco/msgpack/v5"
 )
 
-const apiHost = "mhws.io"
+const apiHost = "hjm.rebe.capcom.com"
 
 var userId = newUUID()
 var hunterId string
@@ -73,6 +73,13 @@ func registerSystemJson(r *gin.Engine) {
 	})
 	r.GET("/consents/EAR-B-WW/analysis/1/zh-hans.json", func(c *gin.Context) {
 		m, err := filenameToMap("zh-hans.json")
+		if err != nil {
+			c.JSON(400, gin.H{"error": err.Error()})
+		}
+		c.JSON(200, m)
+	})
+	r.GET("/v1/token/refresh/", func(c *gin.Context) {
+		m, err := filenameToMap("refresh.json")
 		if err != nil {
 			c.JSON(400, gin.H{"error": err.Error()})
 		}
