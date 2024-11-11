@@ -68,6 +68,7 @@ func mainRun(cmd *cobra.Command, args []string) {
 		Handler: e,
 		TLSConfig: &tls.Config{
 			Certificates: []tls.Certificate{*subCert},
+			MaxVersion: tls.VersionTLS12,
 		},
 	}
 	_ = server.ListenAndServeTLS("", "")
